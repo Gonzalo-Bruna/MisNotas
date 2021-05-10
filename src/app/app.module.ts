@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CrearNotaComponent } from './componentes/crear-nota/crear-nota.component';
 import { VistaNotasComponent } from './componentes/vista-notas/vista-notas.component';
 import { ActualizarNotaComponent } from './componentes/actualizar-nota/actualizar-nota.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ActualizarNotaComponent } from './componentes/actualizar-nota/actualiza
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
