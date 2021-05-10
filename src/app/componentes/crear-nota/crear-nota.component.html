@@ -1,1 +1,16 @@
-<p>crear-nota works!</p>
+<form [formGroup]="formulario">
+
+    <label>Titulo</label>
+    <input type="text" formControlName="titulo">
+
+    <label>Estado</label>
+    <select formControlName="estado">
+
+    </select>
+
+    <label>Descripcion</label>
+    <input type="textarea" formControlName="descripcion">
+
+    <button>Crear</button>
+
+</form>
