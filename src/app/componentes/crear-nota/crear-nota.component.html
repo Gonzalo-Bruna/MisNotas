@@ -1,4 +1,4 @@
-<form [formGroup]="formulario">
+<form [formGroup]="formulario" (ngSubmit)="crearNota()">
 
     <div class="mb-4">
         <label class="form-label">Titulo</label>
@@ -7,7 +7,7 @@
 
     <div class="estado-select mb-4 d-flex flex-column">
         <label>Estado</label>
-        <select class="form-select" formControlName="descripcion">
+        <select class="form-select" formControlName="estado">
             <option disabled selected value="">Seleccione una opción</option>
             <option value="1">Abierto</option>
             <option value="2">En Proceso</option>
@@ -23,6 +23,5 @@
     <div class="button d-flex justify-content-end">
         <button type="submit" class="btn btn-primary">Agregar</button>
     </div>
-    
 
 </form>

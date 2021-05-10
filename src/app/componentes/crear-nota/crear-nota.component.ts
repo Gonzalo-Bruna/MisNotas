@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Nota, listaNotas } from '../../../app/interfaces/nota';
 
 @Component({
   selector: 'app-crear-nota',
@@ -9,9 +10,6 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 export class CrearNotaComponent implements OnInit {
 
   formulario:FormGroup;
-  titulo:AbstractControl;
-  estado:AbstractControl;
-  descripcion:AbstractControl;
 
   constructor(private fb: FormBuilder) {
 
@@ -20,14 +18,23 @@ export class CrearNotaComponent implements OnInit {
       estado:['', [Validators.required]],
       descripcion:['', [Validators.required]]
     });
-
-    this.titulo = this.formulario.get("titulo")?.value;
-    this.estado = this.formulario.get("estado")?.value;
-    this.descripcion = this.formulario.get("descripcion")?.value;
-
+    
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  crearNota(){
+
+    let nota:Nota = {
+      titulo: this.formulario.get("titulo")?.value,
+      estado: this.formulario.get("estado")?.value,
+      descripcion: this.formulario.get("descripcion")?.value
+    }
+
+    listaNotas.push(nota);
+
+    console.log(listaNotas);
+
   }
 
 }
