@@ -7,7 +7,7 @@ import { Nota } from '../../../app/interfaces/nota';
 })
 export class ActualizarNotaComponent implements OnInit {
 
-  nota:Nota = history.state.data
+  nota:Nota = history.state.data;
   titulo:string = this.nota.titulo;
   descripcion:string = this.nota.descripcion;
 
