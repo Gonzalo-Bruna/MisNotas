@@ -1,4 +1,4 @@
-<form [formGroup]="formulario" (ngSubmit)="crearNota()">
+<form [formGroup]="formulario">
 
     <div class="mb-4">
         <label class="form-label">Titulo</label>
@@ -21,7 +21,7 @@
       </div>
 
     <div class="button d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <a class="btn btn-primary" [routerLink]="['/vistaNotas']" routerLinkActive="router-link-active" (click)="crearNota()">Agregar</a>
     </div>
 
 </form>
