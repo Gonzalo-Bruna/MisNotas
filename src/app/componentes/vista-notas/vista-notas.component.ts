@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { listaNotas, Nota } from '../../../app/interfaces/nota';
+import { listaNotas, Nota, notaActualizar } from '../../../app/interfaces/nota';
 
 @Component({
   selector: 'app-vista-notas',
@@ -22,6 +22,10 @@ export class VistaNotasComponent implements OnInit {
         return;
       } 
     }
+  }
+
+  actualizarNota(nota:Nota){
+    notaActualizar.push(nota);
   }
 
 }

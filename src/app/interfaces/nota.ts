@@ -5,3 +5,4 @@ export interface Nota {
 }
 
 export let listaNotas:Array<Nota> = [];
+export let notaActualizar:Array<Nota> = [];
