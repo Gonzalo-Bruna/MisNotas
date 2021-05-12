@@ -12,7 +12,7 @@
 
       <div class="notas-abiertas mb-3" *ngFor="let nota of notas">
           <div class="card bg-primary text-white" style="width: 18rem;" *ngIf="nota.estado == 1">
-            <a [routerLink]="['/actualizarNota']" routerLinkActive="router-link-active" class="card-body text-white">
+            <a [routerLink]="['/actualizarNota']" routerLinkActive="router-link-active" [state]="{data: nota}" class="card-body text-white">
               <h5 class="card-title">{{nota.titulo}}</h5>
               <p class="card-text">{{nota.descripcion}}</p>
             </a>
@@ -29,7 +29,7 @@
       <div class="notas-en-proceso mb-3" *ngFor="let nota of notas">
 
         <div class="card bg-warning text-body" style="width: 18rem;" *ngIf="nota.estado == 2">
-            <a [routerLink]="['/actualizarNota']" routerLinkActive="router-link-active" class="card-body text-body">
+            <a [routerLink]="['/actualizarNota']" routerLinkActive="router-link-active" [state]="{data: nota}" class="card-body text-body">
               <h5 class="card-title">{{nota.titulo}}</h5>
               <p class="card-text">{{nota.descripcion}}</p>
             </a>
@@ -47,7 +47,7 @@
       <div class="notas-cerradas mb-3" *ngFor="let nota of notas">
     
         <div class="card bg-danger text-white" style="width: 18rem;" *ngIf="nota.estado == 3">
-            <a [routerLink]="['/actualizarNota']" routerLinkActive="router-link-active" class="card-body text-white">
+            <a [routerLink]="['/actualizarNota']" routerLinkActive="router-link-active" [state]="{data: nota}" class="card-body text-white">
               <h5 class="card-title">{{nota.titulo}}</h5>
               <p class="card-text">{{nota.descripcion}}</p>
             </a>
