@@ -1,0 +1,20 @@
+.card{
+    display:flex;
+    flex-direction: row;
+
+    .card-body{
+        width: 80%;
+    }
+    
+    .boton-cerrar{
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width:20%;
+        i{
+            cursor:pointer;
+        }
+    }
+}
+
