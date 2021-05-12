@@ -1,2 +1,27 @@
-<p>titulo {{titulo}}</p>
-<p>descripcion {{descripcion}}</p>
+<form [formGroup]="formulario">
+
+    <div class="mb-4">
+        <label class="form-label">Titulo</label>
+        <input type="text" class="form-control" formControlName="titulo">
+    </div>
+
+    <div class="estado-select mb-4 d-flex flex-column">
+        <label>Estado</label>
+        <select class="form-select" formControlName="estado">
+            <option disabled selected>Seleccione una opción</option>
+            <option value="1">Abierto</option>
+            <option value="2">En Proceso</option>
+            <option value="3" disabled>Cerrado</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label">Descripcion</label>
+        <textarea class="form-control" formControlName="descripcion" rows="3"></textarea>
+      </div>
+
+    <div class="button d-flex justify-content-end">
+        <a class="btn btn-primary" [routerLink]="['/vistaNotas']" routerLinkActive="router-link-active" (click)="actualizarNota()">Actualizar Nota</a>
+    </div>
+
+</form>
