@@ -6,5 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServicioNotasService {
 
+  url:string = "http://localhost/misNotas/backend";
+
   constructor(private servicio:HttpClient) { }
 }
