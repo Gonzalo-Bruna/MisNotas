@@ -9,9 +9,10 @@ import { ServicioNotasService } from '../../../app/servicios/servicio-notas.serv
 })
 export class ActualizarNotaComponent implements OnInit {
 
-  
-
   formulario:FormGroup;
+  titulo:AbstractControl;
+  estado:AbstractControl;
+  descripcion:AbstractControl;
 
   constructor( private fb: FormBuilder, private servicio:ServicioNotasService ) {
 
@@ -21,14 +22,17 @@ export class ActualizarNotaComponent implements OnInit {
       descripcion:['', [Validators.required]]
     });
 
+    this.titulo = this.formulario.controls['titulo'];
+    this.estado = this.formulario.controls['estado'];
+    this.descripcion = this.formulario.controls['descripcion'];
+
   }
 
   ngOnInit(): void {
     let nota = notaActualizar[0];
-    this.formulario.get("titulo")?.setValue(nota.titulo);
-    this.formulario.get("estado")?.setValue(nota.estado);
-    this.formulario.get("descripcion")?.setValue(nota.descripcion);
-
+    this.titulo.setValue(nota.titulo);
+    this.estado.setValue(nota.estado);
+    this.descripcion.setValue(nota.descripcion);
   }
 
   actualizarNota(){
@@ -38,9 +42,9 @@ export class ActualizarNotaComponent implements OnInit {
     for(let i = 0 ; i < listaNotas.length ; i++){
 
       if(listaNotas[i] === nota){
-        nota.titulo = this.formulario.get("titulo")?.value;
-        nota.estado = this.formulario.get("estado")?.value;
-        nota.descripcion = this.formulario.get("descripcion")?.value;
+        nota.titulo = this.titulo.value;
+        nota.estado = this.estado.value;
+        nota.descripcion = this.descripcion.value;
         this.servicio.guardarDatos(listaNotas).subscribe( datos => {
           console.log(datos);
         });
@@ -49,6 +53,10 @@ export class ActualizarNotaComponent implements OnInit {
 
     }
 
+  }
+
+  esValido():boolean{
+    return this.titulo.valid && this.descripcion.valid;
   }
 
 }
