@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Nota, listaNotas, notaActualizar} from '../../../app/interfaces/nota';
+import { ServicioNotasService } from '../../../app/servicios/servicio-notas.service';
 @Component({
   selector: 'app-actualizar-nota',
   templateUrl: './actualizar-nota.component.html',
@@ -12,7 +13,7 @@ export class ActualizarNotaComponent implements OnInit {
 
   formulario:FormGroup;
 
-  constructor( private fb: FormBuilder ) {
+  constructor( private fb: FormBuilder, private servicio:ServicioNotasService ) {
 
     this.formulario = fb.group({
       titulo:['', [Validators.required]],
@@ -40,6 +41,9 @@ export class ActualizarNotaComponent implements OnInit {
         nota.titulo = this.formulario.get("titulo")?.value;
         nota.estado = this.formulario.get("estado")?.value;
         nota.descripcion = this.formulario.get("descripcion")?.value;
+        this.servicio.guardarDatos(listaNotas).subscribe( datos => {
+          console.log(datos);
+        });
         notaActualizar.splice(0, 1);
       }
 
