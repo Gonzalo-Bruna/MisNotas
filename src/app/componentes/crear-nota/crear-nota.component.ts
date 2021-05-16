@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Nota, listaNotas } from '../../../app/interfaces/nota';
+import { ServicioNotasService } from '../../../app/servicios/servicio-notas.service';
 
 @Component({
   selector: 'app-crear-nota',
@@ -11,7 +12,7 @@ export class CrearNotaComponent implements OnInit {
 
   formulario:FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private servicio:ServicioNotasService) {
 
     this.formulario = fb.group({
       titulo:['', [Validators.required]],
@@ -33,7 +34,9 @@ export class CrearNotaComponent implements OnInit {
 
     listaNotas.push(nota);
 
-    console.log(listaNotas);
+    this.servicio.guardarDatos(listaNotas).subscribe( datos => {
+      console.log(datos);
+    });
 
   }
 
