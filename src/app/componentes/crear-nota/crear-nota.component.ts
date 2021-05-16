@@ -20,7 +20,7 @@ export class CrearNotaComponent implements OnInit {
     this.formulario = fb.group({
       titulo:['', [Validators.required]],
       estado:['', [Validators.required]],
-      descripcion:['', [Validators.required]]
+      descripcion:['', [Validators.required, Validators.maxLength(150)]]
     });
 
     this.titulo = this.formulario.controls['titulo'];
