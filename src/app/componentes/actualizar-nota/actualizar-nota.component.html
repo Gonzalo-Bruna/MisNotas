@@ -30,7 +30,12 @@
     </div>
 
     <div role="alert" class="warnings alert alert-warning mb-2 mt-4" *ngIf="descripcion.invalid && descripcion.dirty">
-        <i class="fas fa-exclamation-triangle"></i> La descripcion es obligatoria
+        <div *ngIf="descripcion.errors?.required">
+            <i class="fas fa-exclamation-triangle"></i> La descripcion es obligatoria
+        </div>
+        <div *ngIf="descripcion.errors?.maxlength">
+            <i class="fas fa-exclamation-triangle"></i> La descripcion no puede tener un largo mayor que 150 caracteres
+        </div>
     </div>
 
 </form>
