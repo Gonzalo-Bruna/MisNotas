@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { isThisTypeNode } from 'typescript';
 import { Nota, listaNotas } from '../../../app/interfaces/nota';
 import { ServicioNotasService } from '../../../app/servicios/servicio-notas.service';
 
@@ -11,6 +12,9 @@ import { ServicioNotasService } from '../../../app/servicios/servicio-notas.serv
 export class CrearNotaComponent implements OnInit {
 
   formulario:FormGroup;
+  titulo:AbstractControl;
+  estado:AbstractControl;
+  descripcion:AbstractControl;
 
   constructor(private fb: FormBuilder, private servicio:ServicioNotasService) {
 
@@ -19,7 +23,10 @@ export class CrearNotaComponent implements OnInit {
       estado:['', [Validators.required]],
       descripcion:['', [Validators.required]]
     });
-    
+
+    this.titulo = this.formulario.controls['titulo'];
+    this.estado = this.formulario.controls['estado'];
+    this.descripcion = this.formulario.controls['descripcion'];
   }
 
   ngOnInit(): void { }
@@ -27,9 +34,9 @@ export class CrearNotaComponent implements OnInit {
   crearNota(){
 
     let nota:Nota = {
-      titulo: this.formulario.get("titulo")?.value,
-      estado: this.formulario.get("estado")?.value,
-      descripcion: this.formulario.get("descripcion")?.value
+      titulo: this.titulo.value,
+      estado: this.estado.value,
+      descripcion: this.descripcion.value
     }
 
     listaNotas.push(nota);
@@ -38,6 +45,10 @@ export class CrearNotaComponent implements OnInit {
       console.log(datos);
     });
 
+  }
+
+  esValido():boolean{
+    return this.titulo.valid && this.estado.valid && this.descripcion.valid;
   }
 
 }
