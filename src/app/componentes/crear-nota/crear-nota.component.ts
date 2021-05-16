@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { isThisTypeNode } from 'typescript';
 import { Nota, listaNotas } from '../../../app/interfaces/nota';
 import { ServicioNotasService } from '../../../app/servicios/servicio-notas.service';
 
