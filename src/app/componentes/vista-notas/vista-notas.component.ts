@@ -11,9 +11,7 @@ export class VistaNotasComponent implements OnInit {
 
   notas:Array<Nota> = listaNotas;
 
-  constructor(private servicio:ServicioNotasService) { }
-
-  ngOnInit(): void {
+  constructor(private servicio:ServicioNotasService) {
 
     this.servicio.recibirDatos().subscribe( datos => {
       //console.log(datos);
@@ -21,8 +19,10 @@ export class VistaNotasComponent implements OnInit {
         listaNotas[i] = datos[i];
       }
     });
-    
+
   }
+
+  ngOnInit(): void { }
 
   eliminarNota(nota:Nota){
     for(let i = 0 ; i < this.notas.length ; i++){
