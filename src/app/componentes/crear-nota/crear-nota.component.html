@@ -21,7 +21,19 @@
       </div>
 
     <div class="button d-flex justify-content-end">
-        <a class="btn btn-primary" [routerLink]="['/vistaNotas']" routerLinkActive="router-link-active" (click)="crearNota()">Agregar</a>
+        <a class="btn btn-primary" [routerLink]="['/vistaNotas']" routerLinkActive="router-link-active" (click)="crearNota()" *ngIf="esValido()">Agregar Nota</a>
+        <button type="button" class="btn btn-primary" *ngIf="!esValido()" disabled>Agregar Nota</button>
+    </div>
+
+    <div role="alert" class="warnings alert alert-warning mb-2 mt-4" *ngIf="titulo.invalid && titulo.dirty">
+        <i class="fas fa-exclamation-triangle"></i> El titulo es obligatorio
+    </div>
+    <div role="alert" class="warnings alert alert-warning mb-2 mt-4" *ngIf="estado.invalid && estado.touched">
+        <i class="fas fa-exclamation-triangle"></i> El estado es obligatorio
+    </div>
+
+    <div role="alert" class="warnings alert alert-warning mb-2 mt-4" *ngIf="descripcion.invalid && descripcion.dirty">
+        <i class="fas fa-exclamation-triangle"></i> La descripcion es obligatoria
     </div>
 
 </form>
