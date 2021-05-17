@@ -5,5 +5,17 @@
 
 body{
     width: 60%;
-    margin: auto;
+    margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+    body{
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px){
+    body{
+        width: 90%;
+    }
 }
